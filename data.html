@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Page</title>
+    <link rel="stylesheet" href="data.css">
+</head>
+<body>
+    <h1>Welcome To The Manager Page!</h1>
+    <br><br>
+    
+    <script>
+        const password = prompt("Enter password to access this page:");
+        if (password !== "IceManager") {
+            alert("Access denied!");
+            window.location.href = "index.html"; // Redirect to the form page
+        }
+    </script>
+
+    <h2>Submitted Data</h2>
+    <div>
+        <!-- Buttons and Search Bar -->
+        <button class="manager-button" onclick="location.href='employees.html'">Manage Employees</button>
+        <button class="manager-button" onclick="location.href='index.html'">Back to Form</button>
+        <button class="manager-button" onclick="clearAll()">Clear All</button> <!-- Clear All Button -->
+        <input type="text" id="search-bar" placeholder="Search by Name or State ID" onkeyup="filterTable()">
+        
+    </div>
+    
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>State ID</th>
+                <th>Position</th>
+                <th>Sale Amount</th>
+                <th>Commission</th> <!-- Updated to show Commission Amount -->
+                <th>Timestamp</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        function loadData() {
+            const data = JSON.parse(localStorage.getItem('formData')) || [];
+            const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            data.forEach((row, index) => {
+                const commission = row.saleAmount * row.commissionRate;
+                const newRow = tableBody.insertRow();
+                newRow.insertCell(0).innerText = row.name;       // Name
+                newRow.insertCell(1).innerText = row.stateId;    // State ID
+                newRow.insertCell(2).innerText = row.position;
+                newRow.insertCell(3).innerText = row.saleAmount; // Sale Amount
+                newRow.insertCell(4).innerText = commission.toFixed(2); // Commission Amount
+                newRow.insertCell(5).innerText = row.timestamp;   // Timestamp
+                
+                // Create delete button
+                const deleteCell = newRow.insertCell(6);
+                const deleteButton = document.createElement("button");
+                deleteButton.innerText = "Delete";
+                deleteButton.className = "manager-button"; // Apply the CSS class
+                deleteButton.onclick = () => confirmDelete(index);
+                deleteCell.appendChild(deleteButton);
+            });
+        }
+
+        function confirmDelete(index) {
+            const password = prompt("Enter password to confirm deletion:");
+            if (password === "OWNER") { // Original password for deletion
+                deleteEntry(index);
+            } else {
+                alert("Incorrect password. Entry not deleted.");
+            }
+        }
+
+        function deleteEntry(index) {
+            const data = JSON.parse(localStorage.getItem('formData')) || [];
+            data.splice(index, 1); // Remove the entry
+            localStorage.setItem('formData', JSON.stringify(data)); // Update localStorage
+            loadData(); // Refresh the table
+        }
+
+        function clearAll() {
+            const password = prompt("Enter password to clear all data:");
+            if (password === "OWNER") { // Password to clear all data
+                localStorage.removeItem('formData'); // Clear all data
+                loadData(); // Refresh the table
+                alert("All data cleared.");
+            } else {
+                alert("Incorrect password. Data not cleared.");
+            }
+        }
+
+        function filterTable() {
+            const searchValue = document.getElementById('search-bar').value.toLowerCase();
+            const rows = document.querySelectorAll('#data-table tbody tr');
+
+            rows.forEach(row => {
+                const name = row.cells[0].innerText.toLowerCase();
+                const stateId = row.cells[1].innerText.toLowerCase();
+                if (name.includes(searchValue) || stateId.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+
+        window.onload = loadData;
+    </script>
+</body>
+</html>

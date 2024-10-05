@@ -1,0 +1,271 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000022; /* Deep space blue background */
+    color: #000000; /* Black text */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background: url('https://r2.fivemanage.com/pub/luuleu1djzo7.png') no-repeat center center fixed; /* Use the new background */
+    background-size: cover;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #cc0000; /* Darker Red */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #dcdcdc; /* Light gray text */
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Dark translucent background */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px; /* Space between form and grid */
+}
+
+input[type="text"],
+input[type="number"],
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #cc0000; /* Darker Red border */
+    border-radius: 10px;
+    background: #333; /* Dark background for inputs */
+    color: #000000; /* Black text */
+    font-size: 1em;
+    transition: transform 0.2s, border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #cc0000; /* Darker Red on focus */
+    outline: none;
+}
+
+button {
+    background-color: #cc0000; /* Darker Red */
+    color: #000000; /* Black text */
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+button:hover {
+    transform: scale(1.05); /* Pop-out effect */
+    background-color: #990000; /* Even Darker Red */
+}
+
+.manager-button {
+    background-color: #cc0000; /* Darker Red */
+    color: #000000; /* Black text */
+}
+
+.manager-button:hover {
+    background-color: #990000; /* Even Darker Red */
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+.sidebar button {
+    margin-bottom: 10px; /* Space between buttons */
+    width: 150px; /* Fixed width for buttons */
+    background-color: #cc0000; /* Darker Red */
+    color: #000000; /* Black text */
+}
+
+.logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Style the checkbox to match the theme */
+.checkbox-label input[type="checkbox"] {
+    accent-color: #cc0000; /* Darker Red */
+    width: 20px; /* Adjust size if needed */
+    height: 20px; /* Adjust size if needed */
+    margin-right: 10px; /* Space between checkbox and label */
+}
+
+/* Optional: Additional styling for better appearance */
+.checkbox-label input[type="checkbox"]:checked {
+    background-color: #990000; /* Even Darker Red when checked */
+}
+
+/* Gem Grid Styles */
+#gem-grid {
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 10px; /* Space between grid items */
+    margin-top: 20px;
+    width: 100%; /* Take full width */
+}
+
+/* Centering grid items */
+.grid-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Grid Item Styles */
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Translucent background */
+    border: 1px solid #cc0000; /* Darker Red border */
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    flex: 1 1 100px; /* Flex-grow, flex-shrink, flex-basis */
+    max-width: 150px; /* Maximum width for items */
+    min-width: 100px; /* Minimum width for items to ensure uniformity */
+    backdrop-filter: blur(5px); /* Space-like blurred effect */
+}
+
+/* Ensure consistent height for items */
+.grid-item > .title {
+    flex-grow: 1; /* Allow title space to grow */
+    display: flex;
+    align-items: center; /* Center title vertically */
+}
+
+.gem-image {
+    width: 60px; /* Adjust size as needed */
+    height: 60px; /* Adjust size as needed */
+    margin-bottom: 10px; /* Space between image and title */
+    border-radius: 50%; /* Circular gem images */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Glowing effect */
+}
+
+.title {
+    font-size: 1em; /* Slightly larger font size for titles */
+    color: #cc0000; /* Darker Red text */
+    margin-bottom: 10px; /* Space between title and price */
+}
+
+/* Price field styles */
+.price-field {
+    width: 80%; /* Set width relative to grid item */
+    height: 30px; /* Fixed height for consistency */
+    padding: 5px; /* Adjusted padding */
+    border: 1px solid #333; /* Dark border */
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em; /* Adjusted font size */
+    color: #000000; /* Black text */
+    background: #ffffff; /* White background for price field */
+    box-sizing: border-box;
+    margin-top: 5px; /* Space between title and price field */
+}
+
+/* Calculate Button Styles */
+#calculate-total {
+    background-color: #cc0000; /* Darker Red */
+    color: #000000; /* Black text */
+    padding: 12px 20px; /* Adjusted padding */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em; /* Adjusted font size */
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
+
+#calculate-total:hover {
+    background-color: #990000; /* Even Darker Red */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* Enhanced shadow effect */
+}
+
+.footer-image-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.footer-image {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.dropdown-button {
+    background-color: #cc0000; /* Darker Red */
+    color: #000000; /* Black text */
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.dropdown-content.show {
+    display: block; /* Show the content when active */
+}
+
+.outline {
+    font-size: 48px; /* Adjust font size as needed */
+    color: white; /* Main text color */
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000; /* Outline color */
+}
+
+.suboutline {
+    font-size: 1.5em; /* Adjust font size as needed */
+    color: white; /* Main text color */
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000; /* Outline color */
+}
+
+/*HI
+
+

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tuner Shop</title>
+</head>
+<body>
+    <h1 class="outline">Welcome to The Tuner Shop</h1>
+    <h4 class="suboutline">Please List Your Information Below So We Can Accurately Give You Your Commission</h4>
+    <br><br>
+
+    <!-- Form Section -->
+    <form id="submission-form">
+        <input type="text" name="name" required placeholder="Your Name">
+        <input type="number" name="stateId" required placeholder="State ID" min="0">
+        <input type="number" name="saleAmount" id="saleAmount" required placeholder="Sale Amount" readonly>
+        <input type="hidden" name="timestamp" id="timestamp">
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Dropdown for Engines -->
+    <div class="dropdown">
+        <button class="engine-button" onclick="toggleDropdown('engine-dropdown')">Engine Upgrades</button>
+        <div class="dropdown-content" id="engine-dropdown">
+            <div class="grid-container">
+                <div id="gem-grid">
+                    <!-- Engine Items -->
+                    <div class="grid-item" data-price="1000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_engine1.webp" alt="Engine T1" class="gem-image">
+                        <div class="title">Engine T1</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="3000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_engine2.webp" alt="Engine T2" class="gem-image">
+                        <div class="title">Engine T2</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="8000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_engine3.webp" alt="Engine T3" class="gem-image">
+                        <div class="title">Engine T3</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown for Suspension -->
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('suspension-dropdown')">Suspension Upgrades</button>
+        <div class="dropdown-content" id="suspension-dropdown">
+            <div class="grid-container">
+                <div id="gem-grid">
+                    <!-- Ruby Items -->
+                    <div class="grid-item" data-price="1000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_suspension1.webp" alt="Suspension T1" class="gem-image">
+                        <div class="title">Suspension T1</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="3000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_suspension2.webp" alt="Suspension T2" class="gem-image">
+                        <div class="title">Suspension T2</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="5000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_suspension3.webp" alt="Suspension T3" class="gem-image">
+                        <div class="title">Suspension T3</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown for Transmission -->
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('trans-dropdown')">Tranmission Upgrades</button>
+        <div class="dropdown-content" id="trans-dropdown">
+            <div class="grid-container">
+                <div id="gem-grid">
+                    <!-- Transmission Items -->
+                    <div class="grid-item" data-price="1000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_transmission1.webp" alt="Tranmission T1" class="gem-image">
+                        <div class="title">Tranmission T1</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="4000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_transmission2.webp" alt="Tranmission T2" class="gem-image">
+                        <div class="title">Tranmission T2</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="7000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_transmission3.webp" alt="Tranmission T3" class="gem-image">
+                        <div class="title">Transmission T3</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brake Dropdown -->
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('brakes-dropdown')">Brakes Upgrades</button>
+        <div class="dropdown-content" id="brakes-dropdown">
+            <div class="grid-container">
+                <div id="gem-grid">
+                    <!-- Brake Items -->
+                    <div class="grid-item" data-price="1000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_brakes1.webp" alt="Brakes T1" class="gem-image">
+                        <div class="title">Brakes T1</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="5000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_brakes2.webp" alt="Brakes T2" class="gem-image">
+                        <div class="title">Brakes T2</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="8000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_brakes3.webp" alt="Brakes T3" class="gem-image">
+                        <div class="title">Brakes T3</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown for Turbo -->
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('turbo-dropdown')">Turbo/Full Upgrade</button>
+        <div class="dropdown-content" id="turbo-dropdown">
+            <div class="grid-container">
+                <div id="gem-grid">
+                    <!-- Turbo Items -->
+                    <div class="grid-item" data-price="12000">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_turbo.webp" alt="Turbo" class="gem-image">
+                        <div class="title">Turbo</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="40000"> 
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/upgrade_engine3.webp" alt="Advanced Repair Kit" class="gem-image">
+                        <div class="title">Full Upgrade</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown for Repairs -->
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('repair-dropdown')">Repairs</button>
+        <div class="dropdown-content" id="repair-dropdown">
+            <div class="grid-container">
+                <div id="gem-grid">
+                    <!-- Repair Items -->
+                    <div class="grid-item" data-price="0">
+                        <img src="https://r2.fivemanage.com/pub/yzi8ngqfci0d.png" alt="Body Repair" class="gem-image">
+                        <div class="title">Body Repair</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="1000">
+                        <img src="https://r2.fivemanage.com/pub/yzi8ngqfci0d.png" alt="Full Repair(D-A)" class="gem-image">
+                        <div class="title">Full Repair(D-A)</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="1200">
+                        <img src="https://r2.fivemanage.com/pub/yzi8ngqfci0d.png" alt="Full Repair(S)" class="gem-image">
+                        <div class="title">Full Repair(S)</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="700"> 
+                        <img src="https://r2.fivemanage.com/pub/xavqrouhnosk.png" alt="Police Repair" class="gem-image">
+                        <div class="title">Police Repair</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown for Misc -->
+    <div class="dropdown">
+        <button class="dropdown-button" onclick="toggleDropdown('misc-dropdown')">Misc</button>
+        <div class="dropdown-content" id="misc-dropdown">
+            <div class="grid-container">
+                <div id="gem-grid">
+                    <!-- Misc Items -->
+                    <div class="grid-item" data-price="325">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/lockpick.webp" alt="Lockpick" class="gem-image">
+                        <div class="title">Single Lockpick</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="1200">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/adv_lockpick.webp" alt="Advanced Lockpick" class="gem-image">
+                        <div class="title">Advanced Lockpick</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="350">
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/repairkit.webp" alt="Repair Kit" class="gem-image">
+                        <div class="title">Repair Kit</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                    <div class="grid-item" data-price="500"> <!-- Fixed this line -->
+                        <img src="https://raw.githubusercontent.com/BadCodesGG/sandbox-fivem/main/server/resources/%5Bsandbox%5D/sandbox-inventory/ui/images/items/repairkitadv.webp" alt="Advanced Repair Kit" class="gem-image">
+                        <div class="title">Advanced Repair Kit</div>
+                        <input type="number" class="price-field" placeholder="Amount" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Manager Button Section -->
+    <div class="sidebar">
+        <button class="manager-button" onclick="location.href='easter-egg.html'">Coming Soon!</button> <!--Make Location data.html-->
+    </div>
+
+    <!-- JavaScript for Calculation and Submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const priceFields = document.querySelectorAll('.price-field');
+            const saleAmountInput = document.getElementById('saleAmount');
+
+            priceFields.forEach(field => {
+                field.addEventListener('input', updateSaleAmount);
+            });
+
+            function updateSaleAmount() {
+                let totalAmount = 0;
+
+                document.querySelectorAll('.grid-item').forEach(item => {
+                    const price = parseFloat(item.getAttribute('data-price'));
+                    const amount = parseFloat(item.querySelector('.price-field').value) || 0;
+                    totalAmount += price * amount;
+                });
+
+                saleAmountInput.value = totalAmount.toFixed(2);
+            }
+
+            // Update saleAmount on form submit
+            document.getElementById("submission-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+                updateSaleAmount(); // Ensure saleAmount is updated
+
+                const name = document.querySelector("input[name='name']").value;
+                const stateId = document.querySelector("input[name='stateId']").value.trim();
+                const saleAmount = parseFloat(document.querySelector("input[name='saleAmount']").value);
+                const timestamp = new Date().toISOString();
+
+                // Get the commission rate based on position
+                const position = getPosition(stateId);
+                const commissionRate = getCommission(position);
+
+                // Calculate the commission based on the sale amount
+                const commission = saleAmount * commissionRate;
+
+                // Retrieve existing data or initialize an empty array
+                const data = JSON.parse(localStorage.getItem('formData')) || [];
+                
+                // Add new submission to the data array
+                data.push({ name, stateId, saleAmount, position, commissionRate, commission, timestamp });
+                
+                // Store updated data back in localStorage
+                localStorage.setItem('formData', JSON.stringify(data));
+
+                // Send data to Discord webhook
+                sendToDiscord({ name, stateId, saleAmount, position, commissionRate, commission, timestamp });
+                alert("Data submitted successfully!");
+            });
+
+            function sendToDiscord(data) {
+    const discordWebhookUrl = 'https://discord.com/api/webhooks/1291984737220427836/svG9h2buhS5GkLAMV52ih187M6Mrc30u01r5Wrik03OEPBQ_mtErEAiHIYnbqGx5p4CW'; // Replace with your actual webhook URL
+    
+    // Calculate the commission (10% of sale amount)
+    const commission = (data.saleAmount * 0.10).toFixed(2); // Assuming saleAmount is a number
+
+    const payload = {
+        embeds: [{
+            title: "New Sale Submission",
+            description: `A new sale has been recorded with the following details:`,
+            color: 0x0099ff, // Blue color
+            fields: [
+                { name: "Name", value: data.name, inline: true },
+                { name: "State ID", value: data.stateId, inline: true },
+                { name: "Sale Amount", value: `$${data.saleAmount}`, inline: true },
+                { name: "Commission (10%)", value: `$${commission}`, inline: true }, // Add Commission field
+            ],
+            footer: {
+                text: "Sent from Tuner Shop",
+                icon_url: 'https://yourlogo.com/path/to/larger_logo.png' // Update with the larger logo URL
+            },
+            timestamp: new Date().toISOString()
+        }]
+    };
+
+    fetch(discordWebhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+
+
+            // Get commission rate based on position
+            function getCommission(position) {
+                const commissions = {
+                    "CEO": 0.99,
+                    "Manager": 0.3,
+                    "Employee": 0.2
+                    // Add more positions and their respective commissions here
+                };
+                return commissions[position] || 0;
+            }
+
+            // Function to get the position
+            function getPosition(stateId) {
+                const employees = JSON.parse(localStorage.getItem('employees')) || [];
+                const employee = employees.find(emp => emp.stateId === stateId);
+                return employee ? employee.position : "Unknown";
+            }
+        });
+
+        // Dropdown functionality
+        function toggleDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.classList.toggle("show");
+        }
+    </script>
+   <!-- <div class="footer-image-container">
+        <img src="https://cdn.discordapp.com/attachments/1282500882776195172/1282502084658331678/Ice_planettt.jpg?ex=66df96a4&is=66de4524&hm=75ff65d6900b3e0dae5917c040d5eb182fc529ece99ba59a7041598387b2f539&" alt="Footer Image" class="footer-image">
+    </div>
+
+    <script src="scripts.js"></script>  Link to your JavaScript file 
+</body>-->
+</html>
+``

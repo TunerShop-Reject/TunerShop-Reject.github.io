@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made by Night <3</title>
+    <style>
+ body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000; /* Black background */
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        .gif-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media1.tenor.com/m/NwY5ppxLs_oAAAAd/kitten-keybo.gif') no-repeat center center;
+            background-size: center; /* Cover the viewport */
+            z-index: 1; /* Ensure GIF is below the fireworks */
+        }
+
+
+      
+
+        /* Fireworks container */
+        .fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Prevent interference with other elements */
+            z-index: 10; /* Make sure fireworks are on top */
+        }
+
+        .falling-text {
+            position: absolute;
+            top: 10%; /* Start position near the top */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4em; /* Larger text size */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            white-space: nowrap;
+            animation: fall 15s linear infinite; /* Adjust duration as needed */
+            z-index: 3; /* Ensure text is above everything else */
+        }
+
+        @keyframes fall {
+            from {
+                top: 10%; /* Start near the top */
+            }
+            to {
+                top: 90%; /* Move towards the bottom but not too far */
+            }
+        }
+        .return-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px; /* Adjust size as needed */
+            height: auto;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Container for the fireworks animation -->
+    <div class="fireworks"></div>
+    <div class="gif-container"></div>
+    <div class="falling-text">Made By Nightdesert</div>
+    <img src="https://r2.fivemanage.com/pub/5zp82h8d8r0u.png" alt="Return Icon" class="return-icon" onclick="window.location.href='index.html'">
+    <!-- Link to fireworks JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@1.x/dist/fireworks.js"></script>
+    <script src="fireworks.js"></script>
+</body>
+</html>
+
